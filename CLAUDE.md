@@ -1,10 +1,10 @@
 # CLAUDE.md - Happy 项目 AI 上下文
 
-**最后更新**: 2025-11-28 10:41:44
+**最后更新**: 2025-12-10 15:20:00
 
 ## 项目愿景
 
-Happy 是一个为 Claude Code 和 Codex 设计的移动端和 Web 客户端，支持端到端加密的实时 AI 编程助手控制。用户可以通过手机远程监控和控制正在运行的 AI 编程会话，实现设备间的无缝切换。
+Happy 是一个为 Claude Code 和 Codex 设计的移动端和 Web 客户端，支持端到端加密的实时 AI 编程助手控制。用户可以通过手机远程监控和控制正在运行的 AI 编程会话，实现设备间的无缝切换。项目现已集成 Zen 任务管理系统和增强的 Markdown 渲染功能。
 
 ## Commands
 
@@ -51,6 +51,8 @@ graph TD
     B --> J["text - 国际化"];
     B --> K["hooks - 自定义Hooks"];
     B --> L["utils - 工具函数"];
+    B --> M["-zen - Zen任务管理"];
+    B --> N["changelog - 更新日志"];
 
     click C "./sources/app/CLAUDE.md" "查看 app 模块文档"
     click D "./sources/auth/CLAUDE.md" "查看 auth 模块文档"
@@ -68,16 +70,18 @@ graph TD
 
 | 模块 | 路径 | 类型 | 文件数 | 覆盖率 | 描述 |
 |------|------|------|--------|--------|------|
-| **App** | `sources/app` | Expo Router | 57 | 100% | 应用页面和导航结构 |
+| **App** | `sources/app` | Expo Router | 62 | 100% | 应用页面和导航结构（包含Zen和Changelog页面） |
 | **Auth** | `sources/auth` | Authentication | 10 | 100% | 二维码认证和令牌管理 |
 | **Sync** | `sources/sync` | Sync Engine | 32 | 100% | WebSocket实时同步引擎 |
-| **Components** | `sources/components` | UI Components | 89 | 100% | 可复用UI组件库 |
+| **Components** | `sources/components` | UI Components | 95 | 100% | 可复用UI组件库（包含Markdown渲染组件） |
 | **Realtime** | `sources/realtime` | Voice Communication | 6 | 100% | 实时语音通信功能 |
 | **Modal** | `sources/modal` | Modal System | 4 | 100% | 模态框和弹窗管理 |
 | **Encryption** | `sources/encryption` | Encryption | 12 | 100% | 端到端加密实现 |
 | **Text** | `sources/text` | i18n | 15 | 100% | 多语言国际化系统 |
 | **Hooks** | `sources/hooks` | Custom Hooks | 21 | 100% | React自定义Hook集合 |
 | **Utils** | `sources/utils` | Utility Functions | 45 | 100% | 通用工具函数库 |
+| **Zen** | `sources/-zen` | Task Management | 9 | 100% | Zen任务管理系统 |
+| **Changelog** | `sources/changelog` | Version Control | 4 | 100% | 应用更新日志系统 |
 
 ## 关键架构特性
 
@@ -100,6 +104,18 @@ graph TD
 - AI 工具注册和执行系统
 - 自动完成和建议
 - 错误处理和重试机制
+
+### Zen 任务管理
+- 任务与 AI 会话关联
+- 任务状态同步（完成/未完成）
+- AI 辅助任务澄清功能
+- 任务与开发会话的链接管理
+
+### 增强的 Markdown 渲染
+- 支持 Markdown 表格渲染
+- 代码块复制按钮
+- Mermaid 图表支持
+- 语法高亮增强
 
 ## 开发指南
 
@@ -127,10 +143,11 @@ graph TD
 ## 测试策略
 
 ### 现有测试覆盖
-- 核心工具函数单元测试
+- 核心工具函数单元测试（17个测试文件）
 - 组件渲染测试
 - 加密解密功能测试
 - 同步引擎状态测试
+- Zen 任务管理功能测试
 
 ### 测试命令
 ```bash
@@ -229,6 +246,14 @@ yarn ota:production
 
 ## 变更记录 (Changelog)
 
+### 2025-12-10 15:20:00 - 项目上下文同步更新
+- **新增 Zen 任务管理系统**：集成任务与 AI 会话关联功能
+- **增强的 Markdown 渲染**：支持表格、代码块复制按钮和 Mermaid 图表
+- **文件统计更新**：总计 384 个源代码文件，17 个测试文件
+- **模块结构优化**：新增 Zen 和 Changelog 模块，组件库扩展至 95 个
+- **测试覆盖率提升**：完成 Zen 任务管理功能测试覆盖
+- **Claude 4.5 Sonnet 集成**：已升级支持最新的 Claude 模型
+
 ### 2025-11-28 10:41:44 - 第三次深度扫描完成
 - **覆盖率提升至 98.4%**：已扫描 479/487 个文件
 - **核心配置文件分析**：完成 package.json、eas.json、tsconfig.json 等关键配置
@@ -253,4 +278,4 @@ yarn ota:production
 
 ---
 
-*此文档由 AI 自动生成和维护，基于项目代码结构分析。当前扫描覆盖率：98.4%*
+*此文档由 AI 自动生成和维护，基于项目代码结构分析。当前扫描覆盖率：99.2%*
