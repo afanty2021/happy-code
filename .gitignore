@@ -45,3 +45,6 @@ yarn-error.*
 CLAUDE.local.md
 
 .dev/worktree/*
+
+# Spec workflow - should not be committed
+.spec-workflow/*
